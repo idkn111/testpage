@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Чтение буфера обмена</title>
+</head>
+<body>
+  <h1>Считать буфер обмена</h1>
+  <button onclick="readClipboard()">Считать</button>
+  <p id="output"></p>
+
+  <script>
+    async function readClipboard() {
+      try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById("output").innerText = "Текст из буфера: " + text;
+      } catch (err) {
+        document.getElementById("output").innerText = "Ошибка: " + err.message;
+      }
+    }
+  </script>
+</body>
+</html>
