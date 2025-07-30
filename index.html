@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Калории счетчик</title>
+
+    <style>
+        body {
+
+            background-color: #374352;
+            /* display: flex; */
+            /* flex-direction: column; */
+            /* justify-content: center; */
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Заголовок -->
+    <h1 style="text-align:center; color:rgba(255, 255, 255, 0.833);text-shadow: 0.9px 0.2px 1.5px #ff9900; ">СЧЕТЧИК
+        КАЛОРИЙ</h1>
+
+    <!-- общик блок -->
+    <div style="width: fit-content; margin: 0 auto; text-align: left;">
+
+        <!-- поле для ввода калорий -->
+        <textarea id="calories" cols="50" rows="5"
+            placeholder="Сюда вводить калории через запятую (точку в конце не ставить!)"
+            style="resize: none; display: block;"></textarea>
+
+
+        <!-- блок кнопкой, результатом -->
+        <div>
+            <button style="margin-right: 6px;" onclick="count()">Посчитать</button>
+
+            <span id="vsego" style="color:Khaki;text-shadow: 1px 1px 1px black; margin-left: 120px;  display: inline-block;
+            min-width: 160px;">Всего калорий: 0</span>
+        </div>
+
+
+    </div> <!-- общик блок -->
+
+    <script>
+        function count() {
+            try {
+
+                let final = 0
+                let result = document.getElementById("calories").value
+
+                result = result.split(",")
+                result.map(function (elem) {
+                    final += +elem
+                })
+
+                document.getElementById("vsego").innerText = "Всего калорий: " + final
+
+            } catch (err) {
+                document.getElementById("vsego").innerText = "Ошибка: " + err.message;
+            }
+        }
+    </script>
+</body>
+
+</html>
